@@ -17,33 +17,33 @@ public class lifeFile implements Serializable, ActionListener {
 
     public lifeFile() {
         jfcB = new JButton("Select File");
-        jfcB.addActionListener((java.awt.event.ActionListener) this);
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == jfcB) {
+        jfcB.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == jfcB) {
 
-            // File gameState = lifeBoard.getState();
-            JFileChooser jfc = new JFileChooser();
-            jfc.setCurrentDirectory(new File("."));
-            jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    // File gameState = lifeBoard.getState();
+                    JFileChooser jfc = new JFileChooser();
+                    jfc.setCurrentDirectory(new File("."));
+                    jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
-            setDialogType txtfilter = new javax.jfc.setDialogType();
+                    setDialogType txtfilter = new javax.jfc.setDialogType();
 
-            int result = jfc.showSaveDialog(null);
+                    int result = jfc.showSaveDialog(null);
 
-            if (result == jfc.APPROVE_OPTION) {
-                String fileName = jfc.getName();
-                if (!fileName.contains(".")) {
-                    fileName += ".txt";
+                    if (result == jfc.APPROVE_OPTION) {
+                        String fileName = jfc.getName();
+                        if (!fileName.contains(".")) {
+                            fileName += ".txt";
+                        }
+                        lifePrint lifePrint = new lifePrint();
+                        String str = lifePrint.toString();
+                        write(str, fileName);
+                    }
                 }
-                lifePrint lifePrint = new lifePrint();
-                String str = lifePrint.toString();
-                write(str, fileName);
             }
-        }
-
+        });
     }
 
     static void write(String file, String fileName) {
