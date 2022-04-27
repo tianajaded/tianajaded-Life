@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.concurrent.Flow;
 import java.io.*;
 import java.net.UnknownHostException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 import static javax.swing.BorderFactory.createLineBorder;
 
@@ -43,6 +46,8 @@ public class Buttons extends lifeGUI implements Serializable{
     static tbbuttonStyle startButton = new tbbuttonStyle();
     static tbbuttonStyle prevButton = new tbbuttonStyle();
     static tbbuttonStyle nextButton = new tbbuttonStyle();
+    static tbbuttonStyle saveButton = new tbbuttonStyle();
+    static tbbuttonStyle loadButton = new tbbuttonStyle();
     static tblabelStyle genLabel = new tblabelStyle();
     static javax.swing.JToolBar toolbar = new JToolBar();
     static Timer timer;
@@ -149,6 +154,8 @@ public class Buttons extends lifeGUI implements Serializable{
                         startButton.setText(" START ");
                         setcellsButton.setText(" INPUT ");
                         nextButton.setText(" NEXT >> ");
+                        saveButton.setText(" SAVE ");
+                        loadButton.setText(" LOAD ");
 
                         prevButton.setEnabled(true);
                         startButtonFlag = 0;
@@ -167,6 +174,20 @@ public class Buttons extends lifeGUI implements Serializable{
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 // call method to set previous dot color and update buttons
                 prevGen();
+
+            }
+        });
+
+        saveButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+
+            }
+        });
+
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
 
             }
         });
@@ -207,6 +228,14 @@ public class Buttons extends lifeGUI implements Serializable{
         toolbar.addSeparator();
         startButton.setText(" START ");
         toolbar.add(startButton);
+
+        toolbar.addSeparator();
+        saveButton.setText(" SAVE ");
+        toolbar.add(saveButton);
+
+        toolbar.addSeparator();
+        loadButton.setText(" LOAD ");
+        toolbar.add(loadButton);
 
         genLabel.setText(" 0 ");
         toolbar.add(genLabel);

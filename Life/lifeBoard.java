@@ -200,4 +200,8 @@ public class lifeBoard {
 
     }
 
+    public String getState() {
+        return null;
+    }
+
 }
