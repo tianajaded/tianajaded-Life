@@ -1,11 +1,11 @@
 /*
  * Name: Elisha Phillips
  * Name: Tiana Noll-Walker
- * Date: 02/26/2022
+ * Date: 04/13/2022
  * Course: CPT_S 132 Section 01, Spring 22
- * Assignment: HW6 - LifeGUI
- * Description: Calculates John Conway's Game of Life and prints GUI
- * Grade Level: Challenge
+ * Assignment: HW11 - LifeGUIAnimation
+ * Description: Calculates John Conway's Game of Life and prints GUI Animation
+ * Grade Level: standard
  */
 
 package Life;
@@ -21,9 +21,11 @@ package Life;
 public class Life {
 
     public static void main(String[] args) {
-        // Instantiates lifeGen and calls method to begin the game sequence
-        lifeGen game = new lifeGen();
-        game.initiateGame();
+        // Instantiates Buttons, lifeFrame, and lifeGen
+        lifeFrame lifeFrame = new lifeFrame();
+        Buttons Buttons = new Buttons();
+        lifeGen lifeGen = new lifeGen();
+        lifeFile lifeFile = new lifeFile();
 
     }
 

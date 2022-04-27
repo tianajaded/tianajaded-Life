@@ -5,15 +5,15 @@
  * Course: CPT_S 132 Section 01, Spring 22
  * Assignment: HW11 - LifeAnimation
  * Description: Calculates John Conway's Game of Life and prints Animated GUI
- * Grade Level: Challenge
+ * Grade Level: standard
  */
 
 package Life;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.*;
-import java.awt.BorderLayout;
 
 /**
  * Description: GUI Display Class for the lifeBoard
@@ -21,18 +21,19 @@ import java.awt.BorderLayout;
  */
 public class lifeGUI extends lifeFrame {
 
-    static ArrayList<Label> label = new ArrayList<Label>();
+    static labelClick labelClick = new labelClick();
 
     // Background color for the layout, will form the board's gridlines
-    private static final Color live = Color.WHITE;
-    private static final Color dead = Color.BLACK;
+    private static final Color dead = Color.WHITE;
+    private static final Color live = Color.BLACK;
+    static ArrayList<Label> label = new ArrayList<>();
 
     /**
      * Constructor to that draws the grid layout via an internal JFrame
      *
      * @param gridArr the grid array of cells to be displayed
      */
-    public void drawGridLayout(int[][] gridArr) {
+    static void drawGridLayout(int[][] gridArr) {
         // length of square grid array
         int x = gridArr.length;
 
@@ -41,7 +42,7 @@ public class lifeGUI extends lifeFrame {
         grid.pack();
 
         // setting background
-        grid.setBackground(dead);
+        grid.setBackground(live);
 
         // gb for arranging cells
         grid.setLayout(new GridBagLayout());
@@ -60,6 +61,7 @@ public class lifeGUI extends lifeFrame {
             for (int j = 0; j < x; j++) {
                 // label for each cell
                 Label l = new Label();
+                l.addMouseListener(labelClick);
                 gc.gridx = i;
                 gc.gridy = j;
                 grid.add(l, gc);
@@ -72,7 +74,6 @@ public class lifeGUI extends lifeFrame {
         updateGridLayout(gridArr);
         // add to component panel
         c.add(grid, BorderLayout.CENTER);
-
     }
 
     /**
@@ -81,7 +82,7 @@ public class lifeGUI extends lifeFrame {
      * @param gridArr the grid array of cells to be displayed
      */
 
-    public void updateGridLayout(int[][] gridArr) {
+    static void updateGridLayout(int[][] gridArr) {
         int x = gridArr.length;
         int index;
         for (int i = 0; i < x; i++) {
@@ -89,13 +90,43 @@ public class lifeGUI extends lifeFrame {
                 index = (x * j) + i;
                 // Check grid cell for live or dead state and update string
                 if (gridArr[i][j] == 0) {
-                    label.get(index).setBackground(live);
-                } else {
                     label.get(index).setBackground(dead);
+                } else {
+                    label.get(index).setBackground(live);
                 }
                 index += 1;
             }
         }
     }
+
+    /**
+     * method to update the grid
+     * 
+     * @param dimensions
+     * @return tempGrid
+     */
+    static int[][] updateGrid(int dimensions) {
+        int x = dimensions;
+        lifeBoard lifeBoard = new lifeBoard();
+        int[][] tempGrid = lifeBoard.generateEmptyBoard(dimensions);
+        int index;
+        for (int i = 0; i < x; i++) {
+            for (int j = 0; j < x; j++) {
+                index = (x * j) + i;
+                // Check grid cell for live or dead state and update string
+                if (label.get(index).getBackground() == live) {
+                    tempGrid[i][j] = 1;
+                }
+                index += 1;
+            }
+        }
+        return tempGrid;
+    }
+
+    public static Container getContentPane() {
+        return null;
+    }
+
+
 
 }

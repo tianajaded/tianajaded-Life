@@ -1,14 +1,16 @@
 /*
  * Name: Elisha Phillips
  * Name: Tiana Noll-Walker
- * Date: 02/26/2022
+ * Date: 04/13/2022
  * Course: CPT_S 132 Section 01, Spring 22
- * Assignment: HW6 - LifeGUI
+ * Assignment: HW11 - LifeGUIAnimation
  * Description: Calculates John Conway's Game of Life and prints GUI
- * Grade Level: Challenge
+ * Grade Level: Standard 
  */
 
 package Life;
+
+import java.util.ArrayList;
 
 /**
  * lifeBoard class contains the methods to generate the grid
@@ -19,6 +21,7 @@ package Life;
  */
 public class lifeBoard {
 
+    public static Object board;
     // Declares integer values for cell states
     private int dead = 0;
     private int live = 1;
@@ -29,7 +32,6 @@ public class lifeBoard {
      *
      * @param size integer value determines height and width of square array
      *             shape: (size, size)
-     *
      * @return grid[][] returns generated int array
      */
     public int[][] generateEmptyBoard(int size) {
@@ -50,7 +52,6 @@ public class lifeBoard {
      *
      * @param size integer value determines height and width of square array
      *             shape: (size, size)
-     *
      * @return grid[][] returns generated int array
      */
     public int[][] generateStartingBoard(int size) {
@@ -101,7 +102,6 @@ public class lifeBoard {
      * @param grid int square array for the present generation grid
      * @param x    integer row value
      * @param y    integer column value
-     *
      * @return count returns integer value with the sum of the neighbor states
      */
     public int countAliveNeighbors(int[][] grid, int x, int y) {
@@ -159,7 +159,6 @@ public class lifeBoard {
      * Calculates the grid for the next generation
      *
      * @param grid int square array for the present generation grid
-     *
      * @return nextGrid returns int square array for the future generation grid
      */
     public int[][] Step(int[][] grid) {
@@ -200,4 +199,5 @@ public class lifeBoard {
         return nextGrid;
 
     }
+
 }
