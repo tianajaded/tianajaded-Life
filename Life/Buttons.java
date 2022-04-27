@@ -10,16 +10,18 @@
 
 package Life;
 
+import javax.jfc.setDialogType;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.concurrent.Flow;
 import java.io.*;
 import java.net.UnknownHostException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 import static javax.swing.BorderFactory.createLineBorder;
 
@@ -27,7 +29,7 @@ import static javax.swing.BorderFactory.createLineBorder;
  * This class constructs the buttons and displays them on the lifeGui.
  * When the buttons are pressed, it initiates or stops the game.
  */
-public class Buttons extends lifeGUI implements Serializable{
+public class Buttons extends lifeGUI implements Serializable {
 
     // static flag to store state of start button: 0 - start, 1 - pause
     static int startButtonFlag = 0;
@@ -39,7 +41,8 @@ public class Buttons extends lifeGUI implements Serializable{
     static tblabelStyle inputLabelb = new tblabelStyle();
     static JTextField inputText = new JTextField();
     static JPanel input = new JPanel();
-   // static FileChooser jfc = new FileChooser();
+    // static FileChooser jfc = new FileChooser();
+    String fileName;
 
     // fields for toolbar
     static tbbuttonStyle setcellsButton = new tbbuttonStyle();
@@ -177,12 +180,29 @@ public class Buttons extends lifeGUI implements Serializable{
 
             }
         });
-
+        
         saveButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-
+                if (e.getSource() == saveButton) {
+                    JFileChooser jfc = new JFileChooser();
+                    try {
+                        File f = new File(new File("fileName.txt").getCanonicalPath());
+                    } catch (IOException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    jfc.setSelectedFile(new File("c:/User/Filename.txt"));
+                    jfc.showSaveDialog(null);
+                    File currentFile = jfc.getSelectedFile();
+                    
+                        
+                    
+                    
+                }
             }
+
+            
         });
 
         loadButton.addActionListener(new ActionListener() {
@@ -216,7 +236,6 @@ public class Buttons extends lifeGUI implements Serializable{
         });
 
     }
-
 
     /**
      * method to build toolbar for user interface
