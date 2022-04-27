@@ -180,10 +180,10 @@ public class Buttons extends lifeGUI implements Serializable {
 
             }
         });
-        
-        saveButton.addActionListener(new ActionListener(){
+
+        saveButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == saveButton) {
                     JFileChooser jfc = new JFileChooser();
                     try {
@@ -195,24 +195,18 @@ public class Buttons extends lifeGUI implements Serializable {
                     jfc.setSelectedFile(new File("c:/User/Filename.txt"));
                     jfc.showSaveDialog(null);
                     File currentFile = jfc.getSelectedFile();
-                    
-                        
-                    
-                    
+
                 }
             }
 
-            
         });
 
         loadButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
 
             }
         });
-
-
 
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             // inner class for button event
